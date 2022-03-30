@@ -65,31 +65,31 @@ def find_path(maze, max_to_break = 0, start = None, goal = None):
             right = _maze[x, y + 1]
             if up in [0,1]:
                 new_pos = curr_pos.move_up(up)
-                _maze[x - 1, y] = 2 # 2 for visited places
+                _maze[x - 1, y] = 2 # 2 for the visited places
                 if new_pos.n_break <= max_to_break:
                     if new_pos.coordinate == goal:
-                        return Node(f"Done in {steps_number - 1} moves by breaking {int(new_pos.n_break)} wall(s).", new_pos)
+                        return Node(f"Done in {steps_number - 1} moves by breaking {int(abs(new_pos.n_break))} wall(s).", new_pos)
                     new_positions.append(new_pos)
             if down in [0,1]:
                 new_pos = curr_pos.move_down(down)
                 _maze[x + 1, y] = 2
                 if new_pos.n_break <= max_to_break:
                     if new_pos.coordinate == goal:
-                        return Node(f"Done in {steps_number - 1} moves by breaking {int(new_pos.n_break)} wall(s).", new_pos)
+                        return Node(f"Done in {steps_number - 1} moves by breaking {int(abs(new_pos.n_break))} wall(s).", new_pos)
                     new_positions.append(new_pos)
             if right in [0,1]:
                 new_pos = curr_pos.move_right(right)
                 _maze[x, y + 1] = 2
                 if new_pos.n_break <= max_to_break:
                     if new_pos.coordinate == goal:
-                        return Node(f"Done in {steps_number - 1} moves by breaking {int(new_pos.n_break)} wall(s).", new_pos)
+                        return Node(f"Done in {steps_number - 1} moves by breaking {int(abs(new_pos.n_break))} wall(s).", new_pos)
                     new_positions.append(new_pos)
             if left in [0,1]:
                 new_pos = curr_pos.move_left(left)
                 _maze[x, y - 1] = 2
                 if new_pos.n_break <= max_to_break:
                     if new_pos.coordinate == goal:
-                        return Node(f"Done in {steps_number - 1} moves by breaking {int(new_pos.n_break)} wall(s).", new_pos)
+                        return Node(f"Done in {steps_number - 1} moves by breaking {int(abs(new_pos.n_break))} wall(s).", new_pos)
                     new_positions.append(new_pos)
         
         if new_positions == []:
